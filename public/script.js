@@ -17,36 +17,18 @@ async function fetchHeartsCount() {
     }
 }
 
-// Function to update counter with fetched count
-async function updateCounter() {
-    const heartsCount = await fetchHeartsCount();
-    counterElement.innerText = heartsCount;
-}
-
 // Function to increment hearts count in JSON file and update counter
 async function incrementHeartsCount() {
     try {
-        // Update server-side count using fetch (replace with your actual endpoint)
-        const response = await fetch('/functions/donate-heart', {
-            method: 'POST',
-            body: JSON.stringify({ hearts: 1 }),
-            headers: { 'Content-Type': 'application/json' }
-        });
+        // Increment local counter
+        let currentCount = parseInt(counterElement.innerText);
+        currentCount++;
+        counterElement.innerText = currentCount;
 
-        if (!response.ok) {
-            throw new Error('Failed to donate heart');
-        }
-
-        // Update counter on success
-        const data = await response.json();
-        counterElement.innerText = data.hearts;
-
-        // Update hearts.json file with the new count (replace with your actual endpoint)
-        const currentCount = await fetchHeartsCount();
-        const newCount = currentCount + 1; // Incrementing the count locally
+        // Update hearts.json file with the new count
         await fetch('/data/hearts.json', {
             method: 'PUT', // Assuming you have a server-side endpoint to handle this
-            body: JSON.stringify({ count: newCount }),
+            body: JSON.stringify({ count: currentCount }),
             headers: { 'Content-Type': 'application/json' }
         });
 
@@ -62,3 +44,9 @@ donateButton.addEventListener('click', function() {
 
 // Call updateCounter when the page loads
 document.addEventListener('DOMContentLoaded', updateCounter);
+
+// Function to update counter with fetched count
+async function updateCounter() {
+    const heartsCount = await fetchHeartsCount();
+    counterElement.innerText = heartsCount;
+}
