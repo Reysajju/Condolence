@@ -13,7 +13,7 @@ body {
 }
 
 .text-container {
-    position: absolute;
+    position: relative; /* Changed from absolute to relative */
     top: 5%;
     left: 0;
     width: 100%;
@@ -28,6 +28,7 @@ body {
     margin: 0;
     font-size: 24px; /* Adjusted font size */
     color: white;
+    display: inline-block; /* Allows the text to expand without overlapping */
 }
 
 .container {
