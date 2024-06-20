@@ -22,20 +22,8 @@ function writeHeartsData(data) {
     }
 }
 
-// Initialize hearts data if file does not exist
-if (!fs.existsSync(heartsDataPath)) {
-    writeHeartsData({ count: 0 });
-}
-
 // Main function to handle POST request to increment heart count
 exports.handler = async function(event) {
-    const hearts = parseInt(event.body.hearts);
-    // Increment the heart count in your database or storage
-    const newHearts = currentHearts + hearts;
-    // Return the updated heart count
-    return { hearts: newHearts };
-  };
-
     try {
         // Read current hearts data
         let heartsData = readHeartsData();
