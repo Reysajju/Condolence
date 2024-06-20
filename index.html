@@ -14,7 +14,7 @@
     <div class="container">
         <div class="content">
             <div class="image-container">
-                <img src="public\muhammad-sajjad-ali.png" alt="Muhammad Sajjad Ali" style="max-width: 55%;">
+                <img src="public/muhammad-sajjad-ali.png" alt="Muhammad Sajjad Ali" style="max-width: 55%;">
             </div>
             <div class="counter-container">
                 <h2>Hearts Donated:</h2>
@@ -38,7 +38,7 @@
       const dynamicTextElement2 = document.getElementById('dynamicTextLine2');
     
       // Function to display text word by word with interval
-      function displayTextWordByWord(element, wordsArray) {
+      function displayTextWordByWord(element, wordsArray, callback) {
         let index = 0;
         const interval = setInterval(() => {
           if (index < wordsArray.length) {
@@ -46,17 +46,27 @@
             index++;
           } else {
             clearInterval(interval);
+            if (callback) callback(); // Call the callback function when done
           }
         }, 500); // Adjust interval (in milliseconds) for speed of display
       }
     
-      // Call the function to start displaying text for both lines
-      displayTextWordByWord(dynamicTextElement1, wordsArray1);
+      // Function to start the display loop
+      function startDisplayLoop() {
+        dynamicTextElement1.textContent = ''; // Clear previous content
+        dynamicTextElement2.textContent = ''; // Clear previous content
     
-      // Wait for the first line to finish, then start the second line
-      setTimeout(() => {
-        displayTextWordByWord(dynamicTextElement2, wordsArray2);
-      }, wordsArray1.length * 500 + 1000); // Wait extra 1000ms after first line completes
+        displayTextWordByWord(dynamicTextElement1, wordsArray1, () => {
+          setTimeout(() => {
+            displayTextWordByWord(dynamicTextElement2, wordsArray2, () => {
+              setTimeout(startDisplayLoop, 1000); // Restart loop after a delay
+            });
+          }, 1000); // Wait extra 1000ms after first line completes
+        });
+      }
+    
+      // Start the display loop
+      startDisplayLoop();
     </script>
 <script src="public/script.js"></script>
 </body>
