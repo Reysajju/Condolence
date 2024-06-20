@@ -26,11 +26,15 @@ async function incrementHeartsCount() {
         counterElement.innerText = currentCount;
 
         // Update hearts.json file with the new count
-        await fetch('/data/hearts.json', {
+        const response = await fetch('/functions/update-hearts', {
             method: 'PUT', // Assuming you have a server-side endpoint to handle this
             body: JSON.stringify({ count: currentCount }),
             headers: { 'Content-Type': 'application/json' }
         });
+
+        if (!response.ok) {
+            throw new Error('Failed to update hearts count on server');
+        }
 
     } catch (error) {
         console.error('Error donating heart:', error);
