@@ -1,5 +1,5 @@
 {
-    "name": "your-project-name",
+    "name": "Recite Fatiha For Him",
     "version": "1.0.0",
     "scripts": {
       "build": "echo 'No build step required for HTML, CSS, and JS'"
