@@ -23,9 +23,10 @@ async function updateCounter() {
     counterElement.innerText = heartsCount;
 }
 
-// Function to increment hearts count in JSON file
+// Function to increment hearts count in JSON file and update counter
 async function incrementHeartsCount() {
     try {
+        // Update server-side count using fetch (replace with your actual endpoint)
         const response = await fetch('/.netlify/functions/donate-heart', {
             method: 'POST',
             body: JSON.stringify({ hearts: 1 }),
@@ -40,9 +41,9 @@ async function incrementHeartsCount() {
         const data = await response.json();
         counterElement.innerText = data.hearts;
 
-        // Update hearts.json file with the new count
+        // Update hearts.json file with the new count (replace with your actual endpoint)
         const currentCount = await fetchHeartsCount();
-        const newCount = currentCount + 1; // Incrementing the count
+        const newCount = currentCount + 1; // Incrementing the count locally
         await fetch('/data/hearts.json', {
             method: 'PUT', // Assuming you have a server-side endpoint to handle this
             body: JSON.stringify({ count: newCount }),
