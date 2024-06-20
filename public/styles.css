@@ -49,7 +49,7 @@ body {
     max-width: 400px; /* Fit content better */
     text-align: center;
     padding: 20px;
-    background-color: #fff; /* Background color for the content */
+    background-color: rgba(225, 225, 225, 0.7); /* Background color for the content */
     border-radius: 10px; /* Rounded corners for content */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
