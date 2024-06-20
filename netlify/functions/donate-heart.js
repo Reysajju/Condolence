@@ -1,4 +1,3 @@
-// Example serverless function to handle heart donation count
 const fs = require('fs');
 const path = require('path');
 const heartsDataPath = path.resolve('./data/hearts.json'); // Path to JSON file
