@@ -25,11 +25,13 @@ function writeHeartsData(data) {
 // Main function to handle POST request to increment heart count
 exports.handler = async function(event) {
     try {
+        const heartsToDonate = parseInt(event.body.hearts); // Number of hearts to donate
+
         // Read current hearts data
         let heartsData = readHeartsData();
 
-        // Increment heart count
-        heartsData.count++;
+        // Increment heart count by heartsToDonate
+        heartsData.count += heartsToDonate;
 
         // Write updated hearts data
         writeHeartsData(heartsData);
