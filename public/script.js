@@ -27,7 +27,7 @@ async function updateCounter() {
 async function incrementHeartsCount() {
     try {
         // Update server-side count using fetch (replace with your actual endpoint)
-        const response = await fetch('functions/donate-heart', {
+        const response = await fetch('/functions/donate-heart', {
             method: 'POST',
             body: JSON.stringify({ hearts: 1 }),
             headers: { 'Content-Type': 'application/json' }

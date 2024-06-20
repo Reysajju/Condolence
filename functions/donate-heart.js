@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const heartsDataPath = path.resolve('functions/hearts.json'); // Path to JSON file
+const heartsDataPath = path.resolve('/functions/hearts.json'); // Path to JSON file
 
 // Function to read hearts data from JSON file
 function readHeartsData() {
