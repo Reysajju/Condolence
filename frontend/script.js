@@ -10,9 +10,10 @@ document.getElementById('donateButton').addEventListener('click', () => {
 });
 
 // Fetch initial hearts count
-fetch('https://your-backend-url.vercel.app/api/hearts')
+fetch('https://my-backend.vercel.app/api/hearts')
     .then(response => response.json())
     .then(data => {
         document.getElementById('counter').innerText = data.hearts;
     })
     .catch(error => console.error('Error:', error));
+
