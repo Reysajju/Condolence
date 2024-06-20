@@ -28,13 +28,13 @@ if (!fs.existsSync(heartsDataPath)) {
 }
 
 // Main function to handle POST request to increment heart count
-exports.handler = async (event, context) => {
-    if (event.httpMethod !== 'POST') {
-        return {
-            statusCode: 405,
-            body: JSON.stringify({ error: 'Method Not Allowed' })
-        };
-    }
+exports.handler = async function(event) {
+    const hearts = parseInt(event.body.hearts);
+    // Increment the heart count in your database or storage
+    const newHearts = currentHearts + hearts;
+    // Return the updated heart count
+    return { hearts: newHearts };
+  };
 
     try {
         // Read current hearts data
