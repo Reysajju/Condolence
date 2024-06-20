@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const heartsDataPath = path.resolve('./data/hearts.json'); // Path to JSON file
+const heartsDataPath = path.resolve('functions/hearts.json'); // Path to JSON file
 
 exports.handler = async function(event) {
     try {
