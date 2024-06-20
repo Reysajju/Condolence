@@ -1,3 +1,4 @@
+/* Basic Styles */
 body {
     margin: 0;
     padding: 0;
@@ -5,9 +6,28 @@ body {
     background: url('https://raw.githubusercontent.com/Reysajju/Condolence/main/islamic-wallpaper.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
+    box-sizing: border-box;
+}
+
+.text-container {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.text-container h2,
+.text-container h3 {
+    margin: 0;
+    font-size: 24px; /* Adjusted font size */
+    color: white;
 }
 
 .container {
@@ -20,30 +40,29 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    margin: 50px auto; /* Adjusted margin for centering */
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    z-index: 0;
 }
-
 
 .content {
     width: 100%;
-    max-width: 400px; /* Adjusted max-width to fit content better */
+    max-width: 400px; /* Fit content better */
     text-align: center;
     padding: 20px;
     background-color: #fff; /* Background color for the content */
     border-radius: 10px; /* Rounded corners for content */
-}
-
-.image-container,
-.counter-container {
-    flex: 1;
-    text-align: center;
-    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .image-container img {
     max-width: 100%;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.counter-container {
+    text-align: center;
 }
 
 h2 {
@@ -74,18 +93,32 @@ button:hover {
     background-color: #c0392b;
 }
 
-.background-text {
-    position: absolute;
-    top: 5%;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-}
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .text-container h2,
+    .text-container h3 {
+        font-size: 1.2rem;
+        margin: 10px 0;
+    }
 
-.background-text h2,
-.background-text h3 {
-    margin: 0;
-    font-size: 24px; /* Adjusted font size */
+    .counter-container h2 {
+        font-size: 1.2rem;
+    }
+
+    #counter {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .content {
+        gap: 10px;
+    }
 }
