@@ -1,5 +1,3 @@
-// server.js
-
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -12,7 +10,7 @@ const heartsFilePath = path.join(__dirname, 'data', 'hearts.json');
 app.use(express.json());
 
 // PUT endpoint to update hearts count
-app.put('/functions/update-hearts', (req, res) => {
+app.put('/.netlify/functions/update-hearts', (req, res) => {
     const { count } = req.body;
 
     try {
