@@ -1,5 +1,5 @@
 document.getElementById('donateButton').addEventListener('click', () => {
-    fetch('https://your-backend-url.vercel.app/api/donate', {
+    fetch('https://condolence-lf38u6cmr-sajjadr742gmailcoms-projects.vercel.app', {
         method: 'POST',
     })
     .then(response => response.json())
