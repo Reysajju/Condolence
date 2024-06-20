@@ -1,3 +1,6 @@
 [build]
-command = "npm run build"  # Adjust according to your build command
-publish = "/"
+  functions = "functions"
+
+[[scheduled_functions]]
+  path = "/.netlify/functions/updateCount"
+  schedule = "0 * * * *" # This cron syntax means the function will run at the top of every hour
