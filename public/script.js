@@ -1,22 +1,15 @@
-document.getElementById('donateButton').addEventListener('click', async function() {
-    try {
-        // Disable the button to prevent multiple clicks
-        this.disabled = true;
+// Selecting the button and counter elements
+const donateButton = document.getElementById('donateButton');
+const counterElement = document.getElementById('counter');
 
-        // Send donation request to server
-        const response = await fetch('/.netlify/functions/donate-heart', {
-            method: 'POST',
-            body: JSON.stringify({ hearts: 1 }), // Always donate 1 heart per click
-            headers: { 'Content-Type': 'application/json' }
-        });
+// Initializing the count variable to track donated hearts
+let heartsCount = 0;
 
-        const data = await response.json();
-        document.getElementById('counter').innerText = data.hearts;
+// Adding event listener to the Donate Heart button
+donateButton.addEventListener('click', function() {
+    // Increment the hearts count
+    heartsCount++;
 
-    } catch (error) {
-        console.error('Error donating heart:', error);
-    } finally {
-        // Re-enable the button after the request completes (whether success or error)
-        this.disabled = false;
-    }
+    // Update the counter text content to display the new count
+    counterElement.innerText = heartsCount;
 });
